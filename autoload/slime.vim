@@ -56,11 +56,11 @@ function! s:KittyConfig() abort
   if !exists("b:slime_config")
     let b:slime_config = {"window_id": 1, "listen_on": ""}
   end
-  let b:slime_config["window_id"] = str2nr(system("kitty @ select-window --self"))
-  if v:shell_error
-    let b:slime_config["window_id"] = input("kitty window_id: ","1") 
-  end
-  let b:slime_config["listen_on"] = input("kitty listen on: ", b:slime_config["listen_on"])
+  "let b:slime_config["window_id"] = str2nr(system("kitty @ select-window --self"))
+  "if v:shell_error
+  "end
+  let b:slime_config["listen_on"] = input("kitty listen on: ", "")
+  let b:slime_config["window_id"] = input("kitty window_id: ","1") 
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
