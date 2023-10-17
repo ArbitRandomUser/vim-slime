@@ -49,7 +49,9 @@ function! s:KittySend(config, text)
   if a:config["listen_on"] != ""
     let to_flag = " --to " . shellescape(a:config["listen_on"])
   end
-  call system("kitty @" . to_flag . " send-text --match id:" . shellescape(a:config["window_id"]) . " --stdin", a:text)
+  let comm = "kitty @" . to_flag . " send-text --match id:" . shellescape(a:config["window_id"]) . " ". shellescape("\\e[200~" . a:text . "\\e[201~")
+  "let comm = "kitty @" . to_flag . " send-text --match id:" . shellescape(a:config["window_id"]) ." --stdin  "
+  call system(comm)
 endfunction
 
 function! s:KittyConfig() abort
